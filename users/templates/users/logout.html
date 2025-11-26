@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Título {% endblock %}
+
+{% block content %}
+
+<div class="container-fluid d-flex align-items-center justify-content-between">
+  <div class="d-flex align-items-center">
+    <h4 style="margin: 30px;"">Sesion finalizada. Redirigiendo a la página principal...</h4>
+  </div>
+</div>
+
+  <script>
+    setTimeout(() => {
+      window.location.href = "{% url 'users:home' %}";
+    }, 2000);  // redirige después de 2 segundos
+  </script>
+
+{% endblock %}

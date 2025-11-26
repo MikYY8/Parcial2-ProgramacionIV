@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+
+    <h2>Resultados para "{{ palabra }}"</h2>
+
+    <table class="table table-bordered mt-4">
+        <thead>
+            <tr>
+                <th>Contenido</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for r in resultados %}
+            <tr>
+                <td>{{ r }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{% url 'scraper:enviar_email' %}" class="btn btn-primary">
+        Enviar por correo
+    </a>
+
+    <a href="{% url 'scraper:buscar' %}" class="btn btn-secondary">Volver</a>
+
+</div>
+{% endblock %}

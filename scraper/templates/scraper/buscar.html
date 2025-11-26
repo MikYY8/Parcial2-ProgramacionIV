@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+
+    <h2>Scraper educativo</h2>
+
+    <form method="POST" class="mt-4">
+        {% csrf_token %}
+        <div class="mb-3">
+            {{ form.palabra.label_tag }}
+            {{ form.palabra }}
+        </div>
+
+        <button class="btn btn-success">Buscar</button>
+    </form>
+
+</div>
+{% endblock %}
