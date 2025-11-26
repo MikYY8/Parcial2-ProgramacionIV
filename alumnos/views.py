@@ -58,7 +58,7 @@ def alumno_delete(request, pk):
     alumno.delete()
     return redirect("alumnos:list")
 
-def reporte_pdf(request, id):
+def reporte_pdf(request, id): 
     try:
         reporte = Reporte.objects.get(pk=id)
     except Reporte.DoesNotExist:
