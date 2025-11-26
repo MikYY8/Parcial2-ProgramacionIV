@@ -2,18 +2,16 @@
 
 {% block content %}
 <div class="container mt-4">
-
     <h2>Scraper educativo</h2>
 
-    <form method="POST" class="mt-4">
+    <form method="POST" action="{% url 'scraper:resultado' %}" class="mt-4" id="scraper-form">
         {% csrf_token %}
         <div class="mb-3">
             {{ form.palabra.label_tag }}
             {{ form.palabra }}
         </div>
 
-        <button class="btn btn-success">Buscar</button>
+        <button class="btn btn-success" type="submit">Buscar</button>
     </form>
-
 </div>
 {% endblock %}

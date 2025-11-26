@@ -10,3 +10,11 @@ class Alumno(models.Model):
 
     def __str__(self):
         return f"{self.nombre} {self.apellido}"
+
+class Reporte(models.Model):
+    nombre = models.CharField(max_length=100)
+    contenido = models.TextField()
+    fecha = models.DateField()
+
+    def __str__(self):
+        return self.nombre

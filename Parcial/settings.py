@@ -10,15 +10,21 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-&vf0b3n-uhq$g96bj%nc@zzlk^_9yj+lc($&2hj&4gkcrf$^m='
 
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 load_dotenv()
 
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-DEFAULT_FROM_EMAIL = "no-reply@tuapp.com"
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.sendgrid.net"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = "apikey"  # esta palabra literal
+EMAIL_HOST_PASSWORD = "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"
+DEFAULT_FROM_EMAIL = "mica.yaz03@gmail.com"
 
-LOGIN_REDIRECT_URL = "dashboard"
+LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "login"
 
 
