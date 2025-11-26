@@ -86,38 +86,5 @@ def resultado(request):
     return render(request, "scraper/resultado.html", {"palabra": palabra, "resultados": contenido})
 
 
-
-def enviar_email(request):
-    palabra = request.session.get("scraper_palabra")
-    resultados = request.session.get("scraper_resultados")
-
-    if not palabra or not resultados:
-        messages.error(request, "No hay resultados para enviar.")
-        return redirect("scraper:buscar")
-
-    cuerpo = f"Resultados del scraping para '{palabra}':\n\n"
-    for r in resultados:
-        cuerpo += "- " + r + "\n\n"
-
-    email = EmailMessage(
-        subject=f"Scraping: {palabra}",
-        body=cuerpo,
-        from_email="noreply@tuapp.com",
-        to=["docente@ejemplo.com"],
-    )
-
-    email.send()
-    messages.success(request, "Resultados enviados por correo.")
-    return redirect("scraper:buscar")
-
-def test_email(request):
-    try:
-        send_mail(
-            subject="PRUEBA SENDGRID",
-            message="Este correo fue enviado desde Django usando SendGrid.",
-            from_email=None,  # usa DEFAULT_FROM_EMAIL
-            recipient_list=["mica.yaz03@gmail.com"],
-        )
-        return HttpResponse("Email enviado correctamente.")
-    except Exception as e:
-        return HttpResponse(f"ERROR ENVIANDO EMAIL: {e}")
+def enviar_mail(request):
+    return render(request, "enviar_mail.html")
